@@ -38,7 +38,17 @@ export interface IAyat {
   numberOfAyahs: number;
   ayahs: ISingleayat[];
 }
-interface ISingleayat {
+export interface ISingleayat {
   text: string;
   numberInSurah: number;
+}
+
+export interface ITafsser {
+  result: ISingletafsser[];
+}
+export interface ISingletafsser {
+  id: string;
+  arabic_text: string;
+  translation: string;
+  aya: string;
 }

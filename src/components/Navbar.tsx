@@ -51,13 +51,18 @@ export default function Navbar() {
               </NavLink>
             </li>
             <li className="md:p-2 my-4 md:my-0">
-              <NavLink className="p-2" to="hadit">
-                أحاديث
+              <NavLink className="p-2" to="quran">
+                القراءن الكريم
               </NavLink>
             </li>
             <li className="md:p-2 my-4 md:my-0">
-              <NavLink className="p-2" to="quran">
-                القراءن الكريم
+              <NavLink className="p-2" to="tafsser">
+                تفسير القرأن الكريم
+              </NavLink>
+            </li>
+            <li className="md:p-2 my-4 md:my-0">
+              <NavLink className="p-2" to="hadit">
+                أحاديث
               </NavLink>
             </li>
           </ul>

@@ -3,6 +3,7 @@ import ayat from "../assets/Images/ayat.png";
 import { IAyat } from "../Interface";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "./UI/Loading";
 interface IProps {
   open: boolean;
   setopen: (val: boolean) => void;
@@ -20,7 +21,7 @@ function Ayat({ open, setopen, indexAyat, setclose }: IProps) {
     },
   });
 
-  if (isPending) return "Loading...";
+  if (isPending) return <Loading />;
   console.log(indexAyat);
   function handler() {
     setclose(true);
@@ -28,17 +29,17 @@ function Ayat({ open, setopen, indexAyat, setclose }: IProps) {
   }
   return (
     <div
-      className={`   text-black h-full w-full   absolute bg-white inset-0 z-[100] ${
+      className={`   text-black h-full w-full   absolute bg-white inset-0 z-10 ${
         open ? "translate-x-0 " : "translate-x-full"
       } duration-300 transition-all`}
     >
       <div
-        className="absolute right-8 top-8 p-2 bg-green flex justify-center items-center rounded-md text-white cursor-pointer"
+        className="absolute right-8 top-28 p-2 bg-green flex justify-center items-center rounded-md text-white cursor-pointer"
         onClick={handler}
       >
         <CircleX />
       </div>
-      <div className="container mt-16 flex flex-col items-center">
+      <div className="container mt-28 flex flex-col items-center">
         <h3 className="text-2xl text-green font-sans">{data?.name}</h3>
         <p className="text-lg py-4 text-green">
           عدد الأيات : ( {data?.numberOfAyahs} )

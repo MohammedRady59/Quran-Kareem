@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Slider from "react-slick";
 import { IHadish } from "../Interface";
+import Loading from "../components/UI/Loading";
 
 function Hadit() {
   const { isPending, data } = useQuery<IHadish>({
@@ -14,7 +15,7 @@ function Hadit() {
     },
   });
 
-  if (isPending) return "Loading...";
+  if (isPending) return <Loading />;
   const settings = {
     dots: false,
     infinite: true,

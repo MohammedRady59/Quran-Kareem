@@ -1,16 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { ISuhrah } from "../Interface";
+import { ISinglesurah, ISuhrah } from "../Interface";
 import axios from "axios";
-import Ayat from "../components/Ayat";
 import { useState } from "react";
 import Loading from "../components/UI/Loading";
+import SingleTafsser from "../components/SingleTafsser";
 
-function Quran() {
+function Tafsser() {
   const [open, setopen] = useState(false);
   const [close, setclose] = useState(true);
-  const [indexAyat, setIndex] = useState<number>(0);
+  const [surah, setSurah] = useState("");
+  const [indextafser, setIndex] = useState<number>(0);
   const { isPending, data } = useQuery<ISuhrah>({
-    queryKey: ["surah"],
+    queryKey: ["taffser"],
     queryFn: async () => {
       const { data } = await axios.get("https://api.alquran.cloud/v1/meta");
       return data.data;
@@ -18,10 +19,11 @@ function Quran() {
   });
 
   if (isPending) return <Loading />;
-  function handleIndex(idx: number) {
+  function handleIndex(idx: number, name: ISinglesurah) {
     setopen(true);
     setIndex(idx);
     setclose(false);
+    setSurah(name.name);
   }
   return (
     <>
@@ -29,12 +31,12 @@ function Quran() {
         <div className="pt-28 container ">
           <h2 className="md:text-3xl text-2xl text-center text-green ">
             {" "}
-            &#123; القرأن الكريم &#125;
+            &#123; تفسير القرأن الكريم &#125;
           </h2>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 mt-8 gap-4">
             {data?.surahs.references.map((el, idx) => (
               <div
-                onClick={() => handleIndex(idx)}
+                onClick={() => handleIndex(idx, el)}
                 key={idx}
                 className="font-serif flex flex-col   hover:bg-green hover:text-white hover:border-transparent cursor-pointer hover:scale-[1.1] duration-300 overflow-hidden  border-4 border-[#00000062] items-center rounded-tl-[1em] rounded-tr-[0] rounded-br-[1em] rounded-bl-[0]"
               >
@@ -47,15 +49,16 @@ function Quran() {
       )}
 
       {open && (
-        <Ayat
+        <SingleTafsser
           open={open}
           setopen={setopen}
-          indexAyat={indexAyat}
+          indextafser={indextafser}
           setclose={setclose}
+          surah={surah}
         />
       )}
     </>
   );
 }
 
-export default Quran;
+export default Tafsser;
