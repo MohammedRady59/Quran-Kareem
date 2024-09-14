@@ -14,7 +14,7 @@ function Ayat({ open, setopen, indexAyat, setclose }: IProps) {
     queryKey: ["ayat", `${indexAyat}`],
     queryFn: async () => {
       const { data } = await axios.get(
-        `http://api.alquran.cloud/v1/surah/${indexAyat + 1}`
+        `https://api.alquran.cloud/v1/surah/${indexAyat + 1}`
       );
       return data.data;
     },

@@ -11,7 +11,7 @@ function Quran() {
   const { isPending, data } = useQuery<ISuhrah>({
     queryKey: ["surah"],
     queryFn: async () => {
-      const { data } = await axios.get("http://api.alquran.cloud/v1/meta");
+      const { data } = await axios.get("https://api.alquran.cloud/v1/meta");
       return data.data;
     },
   });

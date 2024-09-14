@@ -8,19 +8,19 @@ function PrayTime() {
     queryKey: ["time"],
     queryFn: async () => {
       const { data } = await axios.get(
-        "http://api.aladhan.com/v1/timingsByCity?city=cairo&country=egypt&method=8"
+        "https://api.aladhan.com/v1/timingsByCity?city=cairo&country=egypt&method=8"
       );
       return data.data;
     },
   });
-
   if (isPending) return "Loading...";
-
+  console.log(data);
   function handlePrayTime(data: IPraytime) {
-    const allPrayTime = Object.entries(data.timings);
+    const allPrayTime = Object.entries(data?.timings);
     return allPrayTime;
   }
   const allDataTime = handlePrayTime(data);
+  console.log(allDataTime);
   const requiredTimings = [
     "Fajr",
     "Sunrise",
