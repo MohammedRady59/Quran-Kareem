@@ -15,7 +15,7 @@ function MoveText() {
         ref={textRef}
         className="absolute bg-green m-1 p-1 rounded-md whitespace-nowrap animate-scroll"
         style={{
-          animationDuration: `${textWidth / 50}s`,
+          animationDuration: `${textWidth / 100}s`,
         }}
       >
         هل صليت على النبي الــيـوم ؟ اللهم صِل وسلم على نبينا محمدﷺ سبحان الله،
