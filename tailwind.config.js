@@ -14,6 +14,15 @@ export default {
           "2xl": "1320px",
         },
       },
+      animation: {
+        scroll: "scroll 24s linear infinite",
+      },
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
       fontFamily: {
         base: ["thuluth-decorated", "sans-serif"],
         main: ["cairo-bold", "serif"],
